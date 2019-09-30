@@ -63,7 +63,7 @@
             },
             getPost() {
                 axios.get(`${server.baseURL}/blog/${this.id}`)
-                then(data => {
+                .then(data => {
                     this.post = data.data;
                 });
             },
