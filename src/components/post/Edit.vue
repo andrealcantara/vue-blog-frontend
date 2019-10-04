@@ -38,14 +38,14 @@
     import router from "../../router";
     export default {
         data() {
-        return {
-            id: 0,
-            post: {}
-        };
+            return {
+                id: 0,
+                post: {}
+            };
         },
         created() {
-        this.id = this.$route.params.id;
-        this.getPost();
+            this.id = this.$route.params.id;
+            this.getPost();
         },
         methods: {
             editPost () {
@@ -57,12 +57,12 @@
                     date_posted : this.post.date_posted
                 };
                 axios.put(`${server.baseURL}/blog/edit?postID=${this.id}`, postData)
-                .then(data => {
+                .then(() => {
                     router.push({name:"home"});
                 });
             },
             getPost() {
-                axios.get(`${server.baseURL}/blog/${this.id}`)
+                axios.get(`${server.baseURL}/blog/post/${this.id}`)
                 .then(data => {
                     this.post = data.data;
                 });

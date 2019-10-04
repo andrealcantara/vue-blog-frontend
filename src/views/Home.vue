@@ -14,8 +14,8 @@
               <p class="card-text"> {{ post.body }} </p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group" style="margin-bottom: 20px;">
-                  <router-link :to="{name:'Post',params:{id:'post._id'}}" class="btn btn-sm btn-outline-secondary">Visualizar</router-link>
-                  <router-link :to="{name:'Edit',params:{id:'post._id'}}" class="btn btn-sm btn-outline-secondary">Editar </router-link>
+                  <router-link :to="{name:'Post',params:{id:post._id}}" class="btn btn-sm btn-outline-secondary">Visualizar</router-link>
+                  <router-link :to="{name:'Edit',params:{id:post._id}}" class="btn btn-sm btn-outline-secondary">Editar </router-link>
                   <button class="btn btn-sm btn-outline-secondary" v-on:click="deletePost(post._id)">Apagar</button>
                 </div>
               </div>
@@ -47,13 +47,13 @@ export default {
   methods:{
     receberPosts(){
       axios
-        .get(`${server.baseURL}/blog/posts`)
+        .get(`${server.baseURL}/blog/post`)
         .then(data => {
           this.posts = data.data
           });
     },
     deletePost(id) {
-      axios.delete(`${server.baseURL}/blog/delete?postID=${id}`).then(data => {
+      axios.delete(`${server.baseURL}/blog?postID=${id}`).then(data => {
         console.log(data);
         window.location.reload();
       });

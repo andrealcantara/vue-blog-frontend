@@ -26,7 +26,7 @@
             }
         },
         created() {
-            this.id = this.$router.params.id;
+            this.id = this.$route.params.id;
             this.getPost();
         },
         methods : {
